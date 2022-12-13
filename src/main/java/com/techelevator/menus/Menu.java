@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.menus;
 
 import java.io.InputStream;
 import java.io.OutputStream;
