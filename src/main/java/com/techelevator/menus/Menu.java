@@ -5,12 +5,14 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Menu {
+public abstract class Menu {
+	private String [] menuOptions;
 
 	private PrintWriter out;
 	private Scanner in;
 
-	public Menu(InputStream input, OutputStream output) {
+	public Menu( InputStream input, OutputStream output) {
+
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
 	}
@@ -50,4 +52,6 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+
+	public abstract void run();
 }
