@@ -3,15 +3,24 @@ package com.techelevator.menus;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Menu {
-	private String [] menuOptions;
+	private String[] menuOptions;
+
+	public PrintWriter getOut() {
+		return out;
+	}
+
+	public Scanner getIn() {
+		return in;
+	}
 
 	private PrintWriter out;
 	private Scanner in;
 
-	public Menu( InputStream input, OutputStream output) {
+	public Menu(InputStream input, OutputStream output) {
 
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
@@ -26,7 +35,7 @@ public abstract class Menu {
 		return choice;
 	}
 
-	private Object getChoiceFromUserInput(Object[] options) {
+	protected Object getChoiceFromUserInput(Object[] options) {
 		Object choice = null;
 		String userInput = in.nextLine();
 		try {
@@ -43,7 +52,7 @@ public abstract class Menu {
 		return choice;
 	}
 
-	private void displayMenuOptions(Object[] options) {
+	protected void displayMenuOptions(Object[] options) {
 		out.println();
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
@@ -54,4 +63,5 @@ public abstract class Menu {
 	}
 
 	public abstract void run();
+
 }

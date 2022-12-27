@@ -6,8 +6,10 @@ import java.io.OutputStream;
 public class MainMenu extends Menu{
     private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
     private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
-    private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE };
-    Menu purchaseMenu;
+    private static final String MAIN_MENU_EXIT = "Exit";
+    private static final String[] MAIN_MENU_OPTIONS =
+            { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,MAIN_MENU_EXIT };
+    private Menu purchaseMenu;
 
     public MainMenu(InputStream input, OutputStream output) {
         super(input, output);
@@ -25,7 +27,10 @@ public class MainMenu extends Menu{
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
                 purchaseMenu.run();
-			}
+			} else if (choice.equals(MAIN_MENU_EXIT)) {
+                break;
+
+            }
 		}
 
     }

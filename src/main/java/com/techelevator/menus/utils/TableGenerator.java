@@ -56,7 +56,6 @@ import java.util.Map;
             stringBuilder.append(NEW_LINE);
             stringBuilder.append(NEW_LINE);
 
-            System.out.println(stringBuilder.toString());
             return stringBuilder.toString();
         }
 
@@ -160,36 +159,27 @@ import java.util.Map;
             stringBuilder.append(TABLE_V_SPLIT_SYMBOL);
 
         }
-//        public void transferTableGenerator(List<Transfer> transfers, Account account, AccountService accountService) {
-//            List<String> headers = new ArrayList<>();
-//            headers.add("#");
-//            headers.add("Transfer ID");
-//            headers.add("From/To");
-//            headers.add("Amount");
-//
-//            List<List<String>> rows = new ArrayList<>();
-//            int i = 1;
-//
-//            for (Transfer transfer : transfers) {
-//
-//                List<String> row = new ArrayList<>();
-//                row.add(Integer.toString(i));
-//                row.add(Integer.toString(transfer.getTransfer_id()));
-//                if (account.getAccountId()==transfer.getAccount_from()) {
-//                    String username = accountService.getUserById(accountService.getAccountById(transfer.getAccount_to()).getUserId()).getUsername();
-//                    row.add("To: "+ username);
-//                }
-//                if (account.getAccountId()==transfer.getAccount_to()) {
-//                    String username = accountService.getUserById(accountService.getAccountById(transfer.getAccount_from()).getUserId()).getUsername();
-//                    row.add("From: " + username);
-//                }
-//                row.add("$"+transfer.getAmount().toString());
-//
-//                rows.add(row);
-//                i++;
-//            }
-//            generateTable(headers,rows);
-//        }
-//    }
+
+        public String generateTableFromList(String header,List<Object> list){
+
+            List<String> headers = new ArrayList<>();
+            List<List<String>> rows = new ArrayList<>();
+            int numberInList = 1;
+
+            headers.add("#");
+            headers.add(header);
+
+            for(Object item : list){
+                List<String> row = new ArrayList<>();
+                row.add(String.valueOf(numberInList));
+                row.add("$ " +( item));
+                rows.add(row);
+                numberInList++;
+            }
+
+            return generateTable(headers,rows);
+
+
+        }
 
 }

@@ -13,12 +13,6 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
-
-
-
-
-
-
 	public static void main(String[] args) {
 		Menu menu = new MainMenu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);

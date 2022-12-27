@@ -11,9 +11,10 @@ public class PurchaseMenu extends Menu{
     private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
     private static final String[] PURCHASE_MENU_OPTIONS =
             {PURCHASE_MENU_OPTION_FEED_MONEY,PURCHASE_MENU_OPTION_SELECT_PRODUCT,PURCHASE_MENU_OPTION_FINISH_TRANSACTION};
-
+    private Menu FeedMoneyMenu;
     public PurchaseMenu(InputStream input, OutputStream output) {
         super(input, output);
+        this.FeedMoneyMenu = new FeedMoneyMenu(input,output);
     }
 
     @Override
@@ -23,8 +24,10 @@ public class PurchaseMenu extends Menu{
 
             if (choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
                 // Feed Money Menu
+                FeedMoneyMenu.run();
             } else if (choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
                 // Select Product Menu
+
             } else if (choice.equals((PURCHASE_MENU_OPTION_FINISH_TRANSACTION))){
                 // Finish transaction
                 break;
